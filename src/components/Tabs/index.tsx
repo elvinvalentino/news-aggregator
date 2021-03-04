@@ -1,43 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-// import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 import { AppBar } from "./components";
 import useStyles from "./styles";
-import tabLabels from "./tabsLabel";
+import tabLabels from "./tabsLabels";
+import { HandleChangeTabFunc } from "../../hooks/useTab";
 
-const TabsComponent: React.FC<{}> = () => {
-	const [position, setPosition] = useState<"static" | "fixed">("static");
+interface IProps {
+	value: number;
+	handleChange: HandleChangeTabFunc;
+}
+
+const TabsComponent: React.FC<IProps> = ({ handleChange, value }) => {
 	const classes = useStyles();
-	const tabEl = useRef<HTMLElement>();
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (!tabEl.current) return;
-			console.log(window.pageYOffset, tabEl.current.offsetTop);
-			if (window.pageYOffset > tabEl.current.offsetTop) {
-				setPosition("fixed");
-			} else {
-				setPosition("static");
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
 
 	return (
-		<AppBar position={"sticky"} ref={tabEl}>
+		<AppBar position={"sticky"}>
 			<Tabs
-				value={0}
+				value={value}
+				onChange={handleChange}
 				variant="scrollable"
 				scrollButtons="auto"
 				classes={{ indicator: classes.indicator }}
 			>
-				{tabLabels.map(label => (
-					<Tab label={label} />
+				{tabLabels.map((label, index) => (
+					<Tab key={index} label={label} />
 				))}
 			</Tabs>
 		</AppBar>

@@ -1,14 +1,19 @@
 import { CssBaseline } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Tabs from "./components/Tabs";
+import News from "./components/News";
+
+import { useTab } from "./hooks";
 
 const App = () => {
+	const { active, handleChangeTab, handleChangeView } = useTab();
+
 	return (
 		<>
 			<CssBaseline />
 			<Navbar />
-			<Tabs />
-			<h1>Hello sasas</h1>
+			<Tabs value={active} handleChange={handleChangeTab} />
+			<News index={active} handleChange={handleChangeView} />
 		</>
 	);
 };

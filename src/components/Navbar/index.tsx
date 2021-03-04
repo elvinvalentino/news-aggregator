@@ -7,7 +7,7 @@ import { NavbarBrand } from "./components";
 const Navbar: React.FC<{}> = () => {
 	return (
 		<Appbar position="static">
-			<Toolbar>
+			<Toolbar variant="dense">
 				<NavbarBrand variant="h6">Vinly</NavbarBrand>
 			</Toolbar>
 		</Appbar>

@@ -9,12 +9,10 @@ import store from "./redux/store";
 import "./index.css";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<ReduxProvider store={store}>
-			<ThemeProvider theme={theme}>
-				<App />
-			</ThemeProvider>
-		</ReduxProvider>
-	</React.StrictMode>,
+	<ReduxProvider store={store}>
+		<ThemeProvider theme={theme}>
+			<App />
+		</ThemeProvider>
+	</ReduxProvider>,
 	document.getElementById("root")
 );
