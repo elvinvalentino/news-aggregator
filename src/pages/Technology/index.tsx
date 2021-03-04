@@ -1,8 +1,8 @@
 import React from "react";
 
-interface IProps {}
+import { TabContentProps } from "../../types";
 
-const Technology: React.FC<IProps> = () => {
+const Technology: React.FC<TabContentProps> = ({ isActive }) => {
 	return <h1>Technology</h1>;
 };
 

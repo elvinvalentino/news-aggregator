@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import Scroll from "react-scroll";
 
 export type HandleChangeTabFunc = (
 	_: ChangeEvent<{}>,
@@ -12,10 +13,16 @@ export const useTab = () => {
 
 	const handleChangeTab: HandleChangeTabFunc = (_, newValue) => {
 		setActive(newValue);
+		Scroll.animateScroll.scrollToTop({
+			duration: 300,
+		});
 	};
 
 	const handleChangeView: HandleChangeViewFunc = newValue => {
 		setActive(newValue);
+		Scroll.animateScroll.scrollToTop({
+			duration: 300,
+		});
 	};
 
 	return {

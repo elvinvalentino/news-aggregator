@@ -1,3 +1,4 @@
 import { useTab } from "./useTab";
+import { useScroll } from "./useScroll";
 
-export { useTab };
+export { useTab, useScroll };

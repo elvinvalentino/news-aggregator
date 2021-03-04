@@ -1,5 +1,4 @@
 const tabs: string[] = [
-	"home",
 	"business",
 	"entertainment",
 	"general",
