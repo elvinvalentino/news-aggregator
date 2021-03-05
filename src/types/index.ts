@@ -42,7 +42,6 @@ export interface ReducerState {
 	error: NewsResponseError | null;
 	currentPage: number;
 	hasMorePage: boolean;
-	lastScrollOffset: number;
 }
 
 export type ThunkResult<R, A extends Action<any>> = ThunkAction<

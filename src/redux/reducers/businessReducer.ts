@@ -8,7 +8,6 @@ const initialState: ReducerState = {
 	isError: false,
 	currentPage: 0,
 	hasMorePage: true,
-	lastScrollOffset: 0,
 };
 
 const BusinessReducer = (
@@ -36,11 +35,6 @@ const BusinessReducer = (
 				isLoading: false,
 				isError: true,
 				error: action.payload,
-			};
-		case "HANDLE_SCROLL_BUSINESS":
-			return {
-				...state,
-				lastScrollOffset: action.payload,
 			};
 		default:
 			return state;

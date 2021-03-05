@@ -1,28 +1,16 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { rootState, TabContentProps } from "../../types";
-import {
-	initialFetch,
-	handleScrollBusiness,
-} from "../../redux/actions/businessActions";
+import { initialFetch } from "../../redux/actions/businessActions";
 import NewsCard from "../../components/NewsCard";
 import { useScroll } from "../../hooks";
 
 const Business: React.FC<TabContentProps> = ({ isActive }) => {
-	const { data, isLoading, lastScrollOffset } = useSelector(
-		(state: rootState) => state.business
-	);
+	const { data, isLoading } = useSelector((state: rootState) => state.business);
 	const dispatch = useDispatch();
 
-	const handleScroll = useCallback(() => {
-		const offset = window.pageYOffset;
-		console.log("scrolled event");
-
-		dispatch(handleScrollBusiness(offset));
-	}, [dispatch]);
-
-	useScroll(isActive, lastScrollOffset, handleScroll);
+	useScroll(isActive);
 
 	useEffect(() => {
 		dispatch(initialFetch());

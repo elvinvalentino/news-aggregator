@@ -6,14 +6,14 @@ import News from "./components/News";
 import { useTab } from "./hooks";
 
 const App = () => {
-	const { active, handleChangeTab, handleChangeView } = useTab();
+	const { active, handleChangeTab } = useTab();
 
 	return (
 		<>
 			<CssBaseline />
 			<Navbar />
 			<Tabs value={active} handleChange={handleChangeTab} />
-			<News index={active} handleChange={handleChangeView} />
+			<News value={active} />
 		</>
 	);
 };

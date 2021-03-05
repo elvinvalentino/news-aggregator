@@ -6,8 +6,6 @@ export type HandleChangeTabFunc = (
 	newValue: number
 ) => void;
 
-export type HandleChangeViewFunc = (newValue: number) => void;
-
 export const useTab = () => {
 	const [active, setActive] = useState<number>(0);
 
@@ -18,16 +16,8 @@ export const useTab = () => {
 		});
 	};
 
-	const handleChangeView: HandleChangeViewFunc = newValue => {
-		setActive(newValue);
-		Scroll.animateScroll.scrollToTop({
-			duration: 300,
-		});
-	};
-
 	return {
 		active,
 		handleChangeTab,
-		handleChangeView,
 	};
 };

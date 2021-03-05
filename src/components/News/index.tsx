@@ -1,7 +1,7 @@
 import React from "react";
-import SwipeableViews from "react-swipeable-views";
+// import SwipeableViews from "react-swipeable-views";
+import TabPanel from "../TabPanel";
 
-import { HandleChangeViewFunc } from "../../hooks/useTab";
 import Business from "../../pages/Business";
 import Entertainment from "../../pages/Entertainment";
 import General from "../../pages/General";
@@ -12,8 +12,7 @@ import Technology from "../../pages/Technology";
 import { TabContentProps } from "../../types";
 
 interface IProps {
-	index: number;
-	handleChange: HandleChangeViewFunc;
+	value: number;
 }
 
 const Components: React.FunctionComponent<TabContentProps>[] = [
@@ -26,17 +25,15 @@ const Components: React.FunctionComponent<TabContentProps>[] = [
 	Technology,
 ];
 
-const News: React.FC<IProps> = ({ index, handleChange }) => {
+const News: React.FC<IProps> = ({ value }) => {
 	return (
-		<SwipeableViews
-			index={index}
-			onChangeIndex={handleChange}
-			animateHeight={true}
-		>
+		<>
 			{Components.map((Component, idx) => (
-				<Component key={idx} isActive={idx === index} />
+				<TabPanel key={idx} value={value} index={idx}>
+					<Component key={idx} isActive={idx === value} />
+				</TabPanel>
 			))}
-		</SwipeableViews>
+		</>
 	);
 };
 

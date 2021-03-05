@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Scroll from "react-scroll";
 
-export const useScroll = (
-	isActive: boolean,
-	offset: number,
-	handleScroll: () => void
-) => {
+export const useScroll = (isActive: boolean) => {
+	const [offset, setOffset] = useState(0);
+
+	const handleScroll = useCallback(() => {
+		setOffset(window.pageYOffset);
+	}, []);
+
 	useEffect(() => {
 		if (isActive) {
 			console.log("test");
@@ -13,9 +15,9 @@ export const useScroll = (
 				duration: 300,
 			});
 			window.addEventListener("scroll", handleScroll);
-		} else {
-			window.removeEventListener("scroll", handleScroll);
 		}
+
+		return () => window.removeEventListener("scroll", handleScroll);
 
 		// eslint-disable-next-line
 	}, [isActive, handleScroll]);
