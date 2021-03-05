@@ -22,7 +22,7 @@ export const fetchBusiness = (): ThunkResult<void, BusinessActions> => async (
 	} = getState();
 	try {
 		const { data } = await axios.get<NewsResponse>(
-			`/top-headlines?category=business&page=${currentPage + 1}`
+			`/top-headlines?category=business&country=id&page=${currentPage + 1}`
 		);
 		dispatch({
 			type: "FETCH_BUSINESS_SUCCESS",

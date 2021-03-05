@@ -1,11 +1,11 @@
 const tabs: string[] = [
-	"business",
-	"entertainment",
-	"general",
-	"health",
-	"science",
-	"sports",
-	"technology",
+	"bisnis",
+	"hiburan",
+	"umum",
+	"kesehatan",
+	"ilmu pengetahuan",
+	"olahraga",
+	"teknologi",
 ];
 
 export default tabs;
