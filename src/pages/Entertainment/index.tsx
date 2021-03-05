@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useScroll } from "../../hooks";
 
 import { TabContentProps } from "../../types";
 
 const Entertainment: React.FC<TabContentProps> = ({ isActive }) => {
-	useScroll(isActive);
+	// useScroll(isActive, 0, () => {});
 	if (isActive)
 		return (
 			<div>

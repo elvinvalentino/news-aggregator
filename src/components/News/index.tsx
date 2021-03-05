@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 // import SwipeableViews from "react-swipeable-views";
 import TabPanel from "../TabPanel";
 
@@ -37,4 +37,4 @@ const News: React.FC<IProps> = ({ value }) => {
 	);
 };
 
-export default News;
+export default memo(News);

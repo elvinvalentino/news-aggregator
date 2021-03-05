@@ -1,6 +1,9 @@
 import axios from "../../axios";
 import { NewsResponse, ThunkResult } from "../../types";
-import { BusinessActions } from "../types/businessTypes";
+import {
+	BusinessActions,
+	HandleScrollBusinessAction,
+} from "../types/businessTypes";
 
 export const initialFetch = (): ThunkResult<
 	void,
@@ -32,3 +35,10 @@ export const fetchBusiness = (): ThunkResult<void, BusinessActions> => async (
 		});
 	}
 };
+
+export const handleScrollBusiness = (
+	offset: number
+): HandleScrollBusinessAction => ({
+	type: "HANDLE_SCROLL_BUSINESS",
+	payload: offset,
+});

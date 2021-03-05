@@ -42,13 +42,14 @@ export interface ReducerState {
 	error: NewsResponseError | null;
 	currentPage: number;
 	hasMorePage: boolean;
+	lastOffset: number;
 }
 
 export type ThunkResult<R, A extends Action<any>> = ThunkAction<
 	R,
-	rootState,
+	RootState,
 	undefined,
 	A
 >;
 
-export type rootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>;

@@ -1,16 +1,20 @@
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Scroll from "react-scroll";
 
-export const useScroll = (isActive: boolean) => {
-	const [offset, setOffset] = useState(0);
+export const useScroll = <T extends Function>(
+	isActive: boolean,
+	offset: number,
+	action: T
+) => {
+	const dispatch = useDispatch();
 
 	const handleScroll = useCallback(() => {
-		setOffset(window.pageYOffset);
-	}, []);
+		dispatch(action(window.pageYOffset));
+	}, [dispatch, action]);
 
 	useEffect(() => {
 		if (isActive) {
-			console.log("test");
 			Scroll.animateScroll.scrollTo(offset, {
 				duration: 300,
 			});

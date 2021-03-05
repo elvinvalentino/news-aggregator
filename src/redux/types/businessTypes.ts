@@ -24,8 +24,14 @@ export interface FetchBusinessErrorAction {
 	payload: NewsResponseError;
 }
 
+export interface HandleScrollBusinessAction {
+	type: typeof HANDLE_SCROLL_BUSINESS;
+	payload: number;
+}
+
 export type BusinessActions =
 	| FetchBusinessAction
 	| FetchBusinessLoadingAction
 	| FetchBusinessSuccessAction
-	| FetchBusinessErrorAction;
+	| FetchBusinessErrorAction
+	| HandleScrollBusinessAction;

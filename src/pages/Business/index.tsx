@@ -1,30 +1,29 @@
-import React, { useEffect, useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { memo } from "react";
 
-import { rootState, TabContentProps } from "../../types";
-import { initialFetch } from "../../redux/actions/businessActions";
+import { TabContentProps } from "../../types";
+import { handleScrollBusiness } from "../../redux/actions/businessActions";
+import Box from "@material-ui/core/Box";
+
 import NewsCard from "../../components/NewsCard";
 import { useScroll } from "../../hooks";
+import { useFetchBusiness } from "../../hooks/useFetchBusiness";
 
 const Business: React.FC<TabContentProps> = ({ isActive }) => {
-	const { data, isLoading } = useSelector((state: rootState) => state.business);
-	const dispatch = useDispatch();
+	const { data, isLoading, lastOffset, error } = useFetchBusiness();
 
-	useScroll(isActive);
+	useScroll(isActive, lastOffset, handleScrollBusiness);
 
-	useEffect(() => {
-		dispatch(initialFetch());
-	}, [dispatch]);
-
-	if (isLoading) return <h1>Loading</h1>;
+	if (error) return <h1>{error.message}</h1>;
+	if (isLoading) return <h1>Loadasdasdasing</h1>;
 
 	return (
-		<div>
-			{data?.articles.map(article => (
-				<NewsCard article={article} />
-			))}
-		</div>
+		<Box px={2}>
+			{data &&
+				data.articles.map((article, idx) => (
+					<NewsCard key={idx} article={article} />
+				))}
+		</Box>
 	);
 };
 
-export default Business;
+export default memo(Business);
