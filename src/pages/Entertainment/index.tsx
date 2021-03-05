@@ -1,5 +1,5 @@
 import React from "react";
-import { useScroll } from "../../hooks";
+// import { useScroll } from "../../hooks";
 
 import { TabContentProps } from "../../types";
 
