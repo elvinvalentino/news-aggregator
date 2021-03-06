@@ -12,8 +12,8 @@ interface IProps {
 const NewsSkeleton: React.FC<IProps> = ({ length = 20 }) => {
 	return (
 		<>
-			{[...Array(length)].map(() => (
-				<Grid item style={{ width: "100%" }}>
+			{[...Array(length)].map((_, idx) => (
+				<Grid key={idx} item style={{ width: "100%" }}>
 					<Card>
 						<Skeleton
 							variant="rect"

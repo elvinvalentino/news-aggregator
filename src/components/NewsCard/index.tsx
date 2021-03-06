@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 import "moment/locale/id";
 
@@ -14,6 +15,7 @@ import {
 	Source,
 	SourceContainer,
 } from "./components";
+import { articleSelected } from "../../redux/actions/bottomSheetActions";
 import { Article } from "../../types";
 
 interface IProps {
@@ -23,8 +25,12 @@ interface IProps {
 moment.locale("id");
 
 const NewsCard: React.FC<IProps> = ({ article }) => {
+	const dispatch = useDispatch();
+
+	const handleOnClick = () => dispatch(articleSelected(article));
+
 	return (
-		<Card>
+		<Card onClick={handleOnClick}>
 			<CardImage src={article.urlToImage} />
 			<CardContent>
 				<NewsTitle>{article.title}</NewsTitle>

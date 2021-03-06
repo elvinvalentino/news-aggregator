@@ -31,7 +31,7 @@ export interface NewsResponseError {
 	message: string;
 }
 
-export interface ReducerState {
+export interface NewsState {
 	data: Article[];
 	isLoading: boolean;
 	isLoadingMore: boolean;

@@ -5,27 +5,11 @@ import Calender from "@material-ui/icons/CalendarToday";
 
 import { theme } from "../../theme";
 
-export const Card = styled.div`
-	display: flex;
-	background: ${theme.palette.primary.light};
-	box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.25);
-	border-radius: 15px;
-	overflow: hidden;
-	height: 100%;
-	max-height: 150px;
-`;
-
 export const CardImage = styled.img`
 	width: 100px;
 	object-fit: cover;
 `;
 
-export const CardContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	padding: 0.5em 1em;
-`;
 export const NewsTitle = styled(Typography)`
 	white-space: nowrap;
 	text-overflow: ellipsis;

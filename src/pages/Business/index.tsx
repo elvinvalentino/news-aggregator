@@ -28,7 +28,7 @@ const Business: React.FC = () => {
 				{isLoading && <NewsSkeleton />}
 				{!isLoading &&
 					data.map((article, idx) => (
-						<Grid item style={{ width: "100%" }}>
+						<Grid key={idx} item style={{ width: "100%" }}>
 							<NewsCard key={idx} article={article} />
 						</Grid>
 					))}

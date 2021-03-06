@@ -1,7 +1,7 @@
-import { ReducerState } from "../../types";
+import { NewsState } from "../../types";
 import { BusinessActions } from "../types/businessTypes";
 
-const initialState: ReducerState = {
+const initialState: NewsState = {
 	data: [],
 	error: null,
 	isLoading: true,
@@ -14,7 +14,7 @@ const initialState: ReducerState = {
 const BusinessReducer = (
 	state = initialState,
 	action: BusinessActions
-): ReducerState => {
+): NewsState => {
 	switch (action.type) {
 		case "FETCH_BUSINESS_LOADING":
 			return {

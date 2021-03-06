@@ -2,6 +2,7 @@ import { CssBaseline } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Tabs from "./components/Tabs";
 import News from "./components/News";
+import BottomSheet from "./components/BottomSheet";
 
 import { useTab } from "./hooks";
 
@@ -14,6 +15,7 @@ const App = () => {
 			<Navbar />
 			<Tabs value={active} handleChange={handleChangeTab} />
 			<News value={active} />
+			<BottomSheet />
 		</>
 	);
 };

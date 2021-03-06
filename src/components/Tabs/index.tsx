@@ -15,7 +15,7 @@ const TabsComponent: React.FC<IProps> = ({ handleChange, value }) => {
 	const classes = useStyles();
 
 	return (
-		<AppBar position={"sticky"}>
+		<AppBar position={"sticky"} classes={{ root: classes.root }}>
 			<Tabs
 				value={value}
 				onChange={handleChange}
