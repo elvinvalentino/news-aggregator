@@ -3,10 +3,6 @@ import { ThunkAction } from "redux-thunk";
 
 import rootReducer from "../redux/reducers";
 
-export interface TabContentProps {
-	isActive: boolean;
-}
-
 export interface ArticleSource {
 	id: string;
 	name: string;
@@ -19,7 +15,7 @@ export interface Article {
 	description: string;
 	url: string;
 	urlToImage: string;
-	publishedAt: Date;
+	publishedAt: string;
 	content: string;
 }
 
@@ -36,9 +32,9 @@ export interface NewsResponseError {
 }
 
 export interface ReducerState {
-	data: NewsResponse | null;
+	data: Article[];
 	isLoading: boolean;
-	isError: boolean;
+	isLoadingMore: boolean;
 	error: NewsResponseError | null;
 	currentPage: number;
 	hasMorePage: boolean;

@@ -13,6 +13,14 @@ export const initialFetch = (): ThunkResult<
 	dispatch(fetchBusiness());
 };
 
+export const fetchBusinessMore = (): ThunkResult<
+	void,
+	BusinessActions
+> => dispatch => {
+	dispatch({ type: "FETCH_BUSINESS_MORE_LOADING" });
+	dispatch(fetchBusiness());
+};
+
 export const fetchBusiness = (): ThunkResult<void, BusinessActions> => async (
 	dispatch,
 	getState

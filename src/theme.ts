@@ -13,6 +13,9 @@ export const theme = {
 		background: {
 			default: "#2A2438 ",
 		},
+		grey: {
+			A100: "#d6d6d6",
+		},
 	},
 };
 

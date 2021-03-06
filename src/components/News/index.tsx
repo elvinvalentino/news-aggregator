@@ -9,13 +9,12 @@ import Health from "../../pages/Health";
 import Science from "../../pages/Science";
 import Sports from "../../pages/Sports";
 import Technology from "../../pages/Technology";
-import { TabContentProps } from "../../types";
 
 interface IProps {
 	value: number;
 }
 
-const Components: React.FunctionComponent<TabContentProps>[] = [
+const Components: React.FunctionComponent[] = [
 	Business,
 	Entertainment,
 	General,
@@ -30,7 +29,7 @@ const News: React.FC<IProps> = ({ value }) => {
 		<>
 			{Components.map((Component, idx) => (
 				<TabPanel key={idx} value={value} index={idx}>
-					<Component key={idx} isActive={idx === value} />
+					<Component key={idx} />
 				</TabPanel>
 			))}
 		</>

@@ -1,8 +1,6 @@
 import React from "react";
 
-import { TabContentProps } from "../../types";
-
-const Health: React.FC<TabContentProps> = ({ isActive }) => {
+const Health: React.FC = () => {
 	return <h1>Health</h1>;
 };
 

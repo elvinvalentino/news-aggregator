@@ -2,11 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Scroll from "react-scroll";
 
-export const useScroll = <T extends Function>(
-	isActive: boolean,
-	offset: number,
-	action: T
-) => {
+export const useScroll = <T extends Function>(offset: number, action: T) => {
 	const dispatch = useDispatch();
 
 	const handleScroll = useCallback(() => {
@@ -14,15 +10,13 @@ export const useScroll = <T extends Function>(
 	}, [dispatch, action]);
 
 	useEffect(() => {
-		if (isActive) {
-			Scroll.animateScroll.scrollTo(offset, {
-				duration: 300,
-			});
-			window.addEventListener("scroll", handleScroll);
-		}
+		Scroll.animateScroll.scrollTo(offset, {
+			duration: 300,
+		});
+		window.addEventListener("scroll", handleScroll);
 
 		return () => window.removeEventListener("scroll", handleScroll);
 
 		// eslint-disable-next-line
-	}, [isActive, handleScroll]);
+	}, [handleScroll]);
 };
