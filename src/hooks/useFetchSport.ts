@@ -1,15 +1,12 @@
 import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-	initialFetch,
-	fetchBusinessMore,
-} from "../redux/actions/businessActions";
+import { initialFetch, fetchSportMore } from "../redux/actions/sportActions";
 import { showSnackbar } from "../redux/actions/snackbarActions";
 import { RootState } from "../types";
 
-export const useFetchBusiness = () => {
-	const business = useSelector((state: RootState) => state.business);
+export const useFetchSport = () => {
+	const sport = useSelector((state: RootState) => state.sport);
 	const dispatch = useDispatch();
 
 	const infiniteScroll = useCallback(() => {
@@ -17,10 +14,10 @@ export const useFetchBusiness = () => {
 			window.innerHeight + document.documentElement.scrollTop ===
 			document.documentElement.scrollHeight
 		) {
-			if (business.hasMorePage && !business.isLoading && !business.error)
-				dispatch(fetchBusinessMore());
+			if (sport.hasMorePage && !sport.isLoading && !sport.error)
+				dispatch(fetchSportMore());
 		}
-	}, [dispatch, business.hasMorePage, business.isLoading, business.error]);
+	}, [dispatch, sport.hasMorePage, sport.isLoading, sport.error]);
 
 	useEffect(() => {
 		window.addEventListener("scroll", infiniteScroll);
@@ -29,16 +26,16 @@ export const useFetchBusiness = () => {
 	}, [infiniteScroll]);
 
 	useEffect(() => {
-		if (business.data.length === 0) {
+		if (sport.data.length === 0) {
 			dispatch(initialFetch());
 		}
-	}, [dispatch, business.data.length]);
+	}, [dispatch, sport.data.length]);
 
 	useEffect(() => {
-		if (business.error) {
-			dispatch(showSnackbar("error", business.error.message));
+		if (sport.error) {
+			dispatch(showSnackbar("error", sport.error.message));
 		}
-	}, [business.error, dispatch]);
+	}, [sport.error, dispatch]);
 
-	return business;
+	return sport;
 };

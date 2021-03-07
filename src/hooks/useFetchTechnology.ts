@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {
 	initialFetch,
-	fetchEntertainmentMore,
-} from "../redux/actions/entertainmentActions";
+	fetchTechnologyMore,
+} from "../redux/actions/technologyActions";
 import { showSnackbar } from "../redux/actions/snackbarActions";
 import { RootState } from "../types";
 
-export const useFetchEntertainment = () => {
-	const entertainment = useSelector((state: RootState) => state.entertainment);
+export const useFetchTechnology = () => {
+	const technology = useSelector((state: RootState) => state.technology);
 	const dispatch = useDispatch();
 
 	const infiniteScroll = useCallback(() => {
@@ -17,18 +17,14 @@ export const useFetchEntertainment = () => {
 			window.innerHeight + document.documentElement.scrollTop ===
 			document.documentElement.scrollHeight
 		) {
-			if (
-				entertainment.hasMorePage &&
-				!entertainment.isLoading &&
-				!entertainment.error
-			)
-				dispatch(fetchEntertainmentMore());
+			if (technology.hasMorePage && !technology.isLoading && !technology.error)
+				dispatch(fetchTechnologyMore());
 		}
 	}, [
 		dispatch,
-		entertainment.hasMorePage,
-		entertainment.isLoading,
-		entertainment.error,
+		technology.hasMorePage,
+		technology.isLoading,
+		technology.error,
 	]);
 
 	useEffect(() => {
@@ -38,16 +34,16 @@ export const useFetchEntertainment = () => {
 	}, [infiniteScroll]);
 
 	useEffect(() => {
-		if (entertainment.data.length === 0) {
+		if (technology.data.length === 0) {
 			dispatch(initialFetch());
 		}
-	}, [dispatch, entertainment.data.length]);
+	}, [dispatch, technology.data.length]);
 
 	useEffect(() => {
-		if (entertainment.error) {
-			dispatch(showSnackbar("error", entertainment.error.message));
+		if (technology.error) {
+			dispatch(showSnackbar("error", technology.error.message));
 		}
-	}, [entertainment.error, dispatch]);
+	}, [technology.error, dispatch]);
 
-	return entertainment;
+	return technology;
 };

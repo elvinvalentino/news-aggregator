@@ -14,11 +14,11 @@ interface IProps {
 }
 
 const Components: React.FunctionComponent[] = [
+	General,
 	Business,
 	Entertainment,
-	General,
-	Health,
 	Science,
+	Health,
 	Sports,
 	Technology,
 ];

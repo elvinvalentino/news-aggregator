@@ -8,6 +8,7 @@ import { theme } from "../../theme";
 export const CardImage = styled.img`
 	width: 100px;
 	object-fit: cover;
+	flex-shrink: 0;
 `;
 
 export const NewsTitle = styled(Typography)`

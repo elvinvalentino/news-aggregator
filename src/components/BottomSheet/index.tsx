@@ -38,12 +38,20 @@ const BottomSheet: React.FC = () => {
 		>
 			<ArticleTitle variant="h5">{selectedArticle?.title}</ArticleTitle>
 			<Breadcrumbs>
-				<ArticleAuthor>{selectedArticle?.author}</ArticleAuthor>
+				<ArticleAuthor>
+					{selectedArticle?.author || selectedArticle?.source.name}
+				</ArticleAuthor>
 				<ArticleDate>
 					{moment(selectedArticle?.publishedAt).format("DD MMMM yyyy HH:mm:ss")}
 				</ArticleDate>
 			</Breadcrumbs>
-			<ArticleImage src={selectedArticle?.urlToImage} alt="article" />
+			<ArticleImage
+				src={
+					selectedArticle?.urlToImage ||
+					`https://via.placeholder.com/300x200/2A2438/ffffff?text=${selectedArticle?.source.name}`
+				}
+				alt="article"
+			/>
 			<ArticleContent>{selectedArticle?.content}</ArticleContent>
 			<ArticleLink href={selectedArticle?.url} target="_blank">
 				Baca selengkapnya di {selectedArticle?.url}

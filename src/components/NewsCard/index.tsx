@@ -31,10 +31,18 @@ const NewsCard: React.FC<IProps> = ({ article }) => {
 
 	return (
 		<Card onClick={handleOnClick}>
-			<CardImage src={article.urlToImage} />
+			<CardImage
+				src={
+					article.urlToImage ||
+					`https://via.placeholder.com/300x200/352F44/ffffff?text=${article.source.name}`
+				}
+			/>
 			<CardContent>
 				<NewsTitle>{article.title}</NewsTitle>
-				<TextWithIcon icon={<PersonIcon />} label={article.author} />
+				<TextWithIcon
+					icon={<PersonIcon />}
+					label={article.author || article.source.name}
+				/>
 				<TextWithIcon
 					icon={<CalenderIcon />}
 					label={moment(article.publishedAt).format("DD MMMM yyyy")}

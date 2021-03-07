@@ -23,11 +23,6 @@ const snackbarReducer = (
 				...state,
 				isOpen: false,
 			};
-		case "CLEAR_MESSAGE":
-			return {
-				...state,
-				message: null,
-			};
 		default:
 			return state;
 	}

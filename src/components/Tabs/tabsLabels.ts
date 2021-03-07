@@ -1,9 +1,9 @@
 const tabs: string[] = [
+	"umum",
 	"bisnis",
 	"hiburan",
-	"umum",
-	"kesehatan",
 	"ilmu pengetahuan",
+	"kesehatan",
 	"olahraga",
 	"teknologi",
 ];
