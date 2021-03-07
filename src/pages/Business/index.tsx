@@ -7,20 +7,12 @@ import NewsCard from "../../components/NewsCard";
 import NewsSkeleton from "../../components/NewsSkeleton";
 import { handleScrollBusiness } from "../../redux/actions/businessActions";
 import { useScroll } from "../../hooks";
-import { useFetchBusiness } from "../../hooks/useFetchBusiness";
+import { useFetchBusiness } from "../../hooks";
 
 const Business: React.FC = () => {
-	const {
-		data,
-		isLoading,
-		isLoadingMore,
-		lastOffset,
-		error,
-	} = useFetchBusiness();
+	const { data, isLoading, isLoadingMore, lastOffset } = useFetchBusiness();
 
 	useScroll(lastOffset, handleScrollBusiness);
-
-	if (error) return <h1>{error.message}</h1>;
 
 	return (
 		<Box px={2}>

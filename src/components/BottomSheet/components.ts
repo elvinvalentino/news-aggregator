@@ -11,7 +11,7 @@ export const ArticleTitle = styled(Typography)`
 export const Breadcrumbs = styled(MuiBreadcrumbs)`
 	color: #fff;
 	font-size: 0.85em;
-	margin: 0.6em 0 1em 0;
+	margin: 0.8em 0 1.2em 0;
 	font-weight: 400;
 `;
 

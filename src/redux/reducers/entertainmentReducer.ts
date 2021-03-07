@@ -1,5 +1,5 @@
 import { NewsState } from "../../types";
-import { BusinessActions } from "../types/businessTypes";
+import { EntertainmentActions } from "../types/entertainmentTypes";
 
 const initialState: NewsState = {
 	data: [],
@@ -11,22 +11,22 @@ const initialState: NewsState = {
 	lastOffset: 0,
 };
 
-const businessReducer = (
+const entertainmentReducer = (
 	state = initialState,
-	action: BusinessActions
+	action: EntertainmentActions
 ): NewsState => {
 	switch (action.type) {
-		case "FETCH_BUSINESS_LOADING":
+		case "FETCH_ENTERTAINMENT_LOADING":
 			return {
 				...state,
 				isLoading: true,
 			};
-		case "FETCH_BUSINESS_MORE_LOADING":
+		case "FETCH_ENTERTAINMENT_MORE_LOADING":
 			return {
 				...state,
 				isLoadingMore: true,
 			};
-		case "FETCH_BUSINESS_SUCCESS":
+		case "FETCH_ENTERTAINMENT_SUCCESS":
 			return {
 				...state,
 				isLoading: false,
@@ -38,13 +38,13 @@ const businessReducer = (
 					action.payload.articles.length + state.data.length <
 					action.payload.totalResults,
 			};
-		case "FETCH_BUSINESS_ERROR":
+		case "FETCH_ENTERTAINMENT_ERROR":
 			return {
 				...state,
 				isLoading: false,
 				error: action.payload,
 			};
-		case "HANDLE_SCROLL_BUSINESS":
+		case "HANDLE_SCROLL_ENTERTAINMENT":
 			return {
 				...state,
 				lastOffset: action.payload,
@@ -54,4 +54,4 @@ const businessReducer = (
 	}
 };
 
-export default businessReducer;
+export default entertainmentReducer;

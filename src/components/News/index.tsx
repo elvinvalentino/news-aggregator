@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-// import SwipeableViews from "react-swipeable-views";
 import TabPanel from "../TabPanel";
 
 import Business from "../../pages/Business";
