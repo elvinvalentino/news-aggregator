@@ -1,6 +1,5 @@
 export const SHOW_SNACKBAR = "SHOW_SNACKBAR";
 export const CLOSE_SNACKBAR = "CLOSE_SNACKBAR";
-export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 export type AlertSeverity = "error" | "warning" | "info" | "success";
 export interface SnackbarState {
@@ -23,11 +22,4 @@ export interface CloseSnackbarAction {
 	type: typeof CLOSE_SNACKBAR;
 }
 
-export interface ClearMessageAction {
-	type: typeof CLEAR_MESSAGE;
-}
-
-export type SnackbarActions =
-	| ShowSnackBarAction
-	| CloseSnackbarAction
-	| ClearMessageAction;
+export type SnackbarActions = ShowSnackBarAction | CloseSnackbarAction;
