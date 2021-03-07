@@ -1,8 +1,10 @@
 import React from "react";
 import { StyledCardContent } from "./components";
 
-const CardContent: React.FC = ({ children }) => {
-	return <StyledCardContent>{children}</StyledCardContent>;
+interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const CardContent: React.FC<IProps> = ({ children, ...rest }) => {
+	return <StyledCardContent {...rest}>{children}</StyledCardContent>;
 };
 
 export default CardContent;

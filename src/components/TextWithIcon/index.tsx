@@ -10,7 +10,7 @@ interface IProps {
 
 const TextWithIcon: React.FC<IProps> = ({ icon, label, ...rest }) => {
 	return (
-		<Grid container alignItems="center" {...rest}>
+		<Grid container alignItems="center" wrap="nowrap" {...rest}>
 			{icon}
 			<Label>{label}</Label>
 		</Grid>

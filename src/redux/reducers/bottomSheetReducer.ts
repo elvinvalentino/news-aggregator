@@ -23,6 +23,10 @@ const BottomSheetReducer = (
 			return {
 				...state,
 				isOpen: false,
+			};
+		case "CLEAR_SELECTED_ARTICLE":
+			return {
+				...state,
 				selectedArticle: null,
 			};
 		default:

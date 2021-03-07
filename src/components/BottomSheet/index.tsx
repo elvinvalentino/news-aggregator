@@ -1,16 +1,29 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import SwipeableBottomSheet from "react-swipeable-bottom-sheet";
+import moment from "moment";
+import "moment/locale/id";
+import { useSelector, useDispatch } from "react-redux";
 
+import {
+	ArticleTitle,
+	Breadcrumbs,
+	ArticleAuthor,
+	ArticleDate,
+	ArticleImage,
+	ArticleContent,
+	ArticleLink,
+} from "./components";
+import { bodyStyle } from "./styles";
 import { bottomSheetClose } from "../../redux/actions/bottomSheetActions";
 import { RootState } from "../../types";
 
-interface IProps {}
+moment.locale("id");
 
-const BottomSheet: React.FC<IProps> = () => {
+const BottomSheet: React.FC = () => {
 	const { isOpen, selectedArticle } = useSelector(
 		(state: RootState) => state.bottomSheet
 	);
+
 	const dispatch = useDispatch();
 
 	return (
@@ -18,14 +31,21 @@ const BottomSheet: React.FC<IProps> = () => {
 			onChange={isOpen => !isOpen && dispatch(bottomSheetClose())}
 			marginTop={128}
 			open={isOpen}
+			bodyStyle={bodyStyle}
+			overflowHeight={0.01}
 		>
-			<h1>{selectedArticle?.title}</h1>
-			<span>
-				{selectedArticle?.author} / {selectedArticle?.publishedAt}
-			</span>
-			<img src={selectedArticle?.urlToImage} alt="article" />
-			<p>{selectedArticle?.content}</p>
-			<p>Baca selengkapnya di {selectedArticle?.url}</p>
+			<ArticleTitle variant="h5">{selectedArticle?.title}</ArticleTitle>
+			<Breadcrumbs>
+				<ArticleAuthor>{selectedArticle?.author}</ArticleAuthor>
+				<ArticleDate>
+					{moment(selectedArticle?.publishedAt).format("DD MMMM yyyy HH:mm:ss")}
+				</ArticleDate>
+			</Breadcrumbs>
+			<ArticleImage src={selectedArticle?.urlToImage} alt="article" />
+			<ArticleContent>{selectedArticle?.content}</ArticleContent>
+			<ArticleLink href={selectedArticle?.url} target="_blank">
+				Baca selengkapnya di {selectedArticle?.url}
+			</ArticleLink>
 		</SwipeableBottomSheet>
 	);
 };

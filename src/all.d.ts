@@ -5,6 +5,8 @@ declare module "react-swipeable-bottom-sheet" {
 		marginTop?: number;
 		onChange?: (isOpen: boolean) => void;
 		fullScreen?: boolean;
+		bodyStyle?: React.CSSProperties;
+		overflowHeight?: number;
 	}
 
 	declare const Component: React.FC<IProps>;

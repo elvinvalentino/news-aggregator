@@ -4,6 +4,9 @@ import Typography from "@material-ui/core/Typography";
 import { theme } from "../../theme";
 
 export const Label = styled(Typography)`
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	color: ${theme.palette.grey.A100};
 	font-size: 0.75em;
 	margin-top: 0.2em;

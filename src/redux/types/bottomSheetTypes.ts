@@ -2,6 +2,7 @@ import { Article } from "../../types";
 
 export const ARTICLE_SELECTED = "ARTICLE_SELECTED";
 export const BOTTOM_SHEET_CLOSE = "BOTTOM_SHEET_CLOSE";
+export const CLEAR_SELECTED_ARTICLE = "CLEAR_SELECTED_ARTICLE";
 
 export interface BottomSheetState {
 	isOpen: boolean;
@@ -17,4 +18,11 @@ export interface BottomSheetCloseAction {
 	type: typeof BOTTOM_SHEET_CLOSE;
 }
 
-export type BottomSheetActions = ArticleSelectedAction | BottomSheetCloseAction;
+export interface ClearSelectedArticle {
+	type: typeof CLEAR_SELECTED_ARTICLE;
+}
+
+export type BottomSheetActions =
+	| ArticleSelectedAction
+	| BottomSheetCloseAction
+	| ClearSelectedArticle;
