@@ -5,6 +5,7 @@ import {
 	initialFetch,
 	fetchBusinessMore,
 } from "../redux/actions/businessActions";
+import { showSnackbar } from "../redux/actions/snackbarActions";
 import { RootState } from "../types";
 
 export const useFetchBusiness = () => {
@@ -16,10 +17,10 @@ export const useFetchBusiness = () => {
 			window.innerHeight + document.documentElement.scrollTop ===
 			document.documentElement.scrollHeight
 		) {
-			if (business.hasMorePage && !business.isLoading)
+			if (business.hasMorePage && !business.isLoading && !business.error)
 				dispatch(fetchBusinessMore());
 		}
-	}, [dispatch, business.hasMorePage, business.isLoading]);
+	}, [dispatch, business.hasMorePage, business.isLoading, business.error]);
 
 	useEffect(() => {
 		window.addEventListener("scroll", infiniteScroll);
@@ -33,6 +34,12 @@ export const useFetchBusiness = () => {
 			dispatch(initialFetch());
 		}
 	}, [dispatch, business.data.length]);
+
+	useEffect(() => {
+		if (business.error) {
+			dispatch(showSnackbar("error", business.error.message));
+		}
+	}, [business.error, dispatch]);
 
 	return business;
 };

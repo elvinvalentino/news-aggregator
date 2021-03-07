@@ -13,7 +13,7 @@ import {
 	ArticleContent,
 	ArticleLink,
 } from "./components";
-import { bodyStyle } from "./styles";
+import { bodyStyle, overlayStyle } from "./styles";
 import { bottomSheetClose } from "../../redux/actions/bottomSheetActions";
 import { RootState } from "../../types";
 
@@ -31,7 +31,9 @@ const BottomSheet: React.FC = () => {
 			onChange={isOpen => !isOpen && dispatch(bottomSheetClose())}
 			marginTop={128}
 			open={isOpen}
+			style={{ boxShadow: "unset" }}
 			bodyStyle={bodyStyle}
+			overlayStyle={overlayStyle}
 			overflowHeight={0.01}
 		>
 			<ArticleTitle variant="h5">{selectedArticle?.title}</ArticleTitle>

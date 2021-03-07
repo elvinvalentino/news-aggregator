@@ -10,14 +10,20 @@ import { useScroll } from "../../hooks";
 import { useFetchBusiness } from "../../hooks";
 
 const Business: React.FC = () => {
-	const { data, isLoading, isLoadingMore, lastOffset } = useFetchBusiness();
+	const {
+		data,
+		isLoading,
+		isLoadingMore,
+		lastOffset,
+		error,
+	} = useFetchBusiness();
 
 	useScroll(lastOffset, handleScrollBusiness);
 
 	return (
 		<Box px={2}>
 			<Grid container spacing={3} direction="column">
-				{isLoading && <NewsSkeleton />}
+				{(isLoading || error) && <NewsSkeleton />}
 				{!isLoading &&
 					data.map((article, idx) => (
 						<Grid key={idx} item style={{ width: "100%" }}>

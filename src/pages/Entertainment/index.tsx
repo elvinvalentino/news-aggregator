@@ -15,13 +15,14 @@ const Entertainment: React.FC = () => {
 		isLoading,
 		isLoadingMore,
 		lastOffset,
+		error,
 	} = useFetchEntertainment();
 
 	useScroll(lastOffset, handleScrollEntertainment);
 	return (
 		<Box px={2}>
 			<Grid container spacing={3} direction="column">
-				{isLoading && <NewsSkeleton />}
+				{(error || isLoading) && <NewsSkeleton />}
 				{!isLoading &&
 					data.map((article, idx) => (
 						<Grid key={idx} item style={{ width: "100%" }}>

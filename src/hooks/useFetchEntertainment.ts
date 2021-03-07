@@ -5,6 +5,7 @@ import {
 	initialFetch,
 	fetchEntertainmentMore,
 } from "../redux/actions/entertainmentActions";
+import { showSnackbar } from "../redux/actions/snackbarActions";
 import { RootState } from "../types";
 
 export const useFetchEntertainment = () => {
@@ -16,10 +17,19 @@ export const useFetchEntertainment = () => {
 			window.innerHeight + document.documentElement.scrollTop ===
 			document.documentElement.scrollHeight
 		) {
-			if (entertainment.hasMorePage && !entertainment.isLoading)
+			if (
+				entertainment.hasMorePage &&
+				!entertainment.isLoading &&
+				!entertainment.error
+			)
 				dispatch(fetchEntertainmentMore());
 		}
-	}, [dispatch, entertainment.hasMorePage, entertainment.isLoading]);
+	}, [
+		dispatch,
+		entertainment.hasMorePage,
+		entertainment.isLoading,
+		entertainment.error,
+	]);
 
 	useEffect(() => {
 		window.addEventListener("scroll", infiniteScroll);
@@ -33,6 +43,12 @@ export const useFetchEntertainment = () => {
 			dispatch(initialFetch());
 		}
 	}, [dispatch, entertainment.data.length]);
+
+	useEffect(() => {
+		if (entertainment.error) {
+			dispatch(showSnackbar("error", entertainment.error.message));
+		}
+	}, [entertainment.error, dispatch]);
 
 	return entertainment;
 };
